@@ -143,9 +143,12 @@ quants <- c(0.05, 0.25, 0.5, 0.75, 0.95)
       quantile = quants,
       value = fittedAdj$fitted.quantiles[,i]
     )
+    
+    yCorrected <- c(0,diff(fittedAdj$fitted.probabilities[,i]))
+    yCorrected[yCorrected < 0] <- 0
     out[[expertId]]$fit <- list(
       x = xPredGlobal,
-      y = c(0,diff(fittedAdj$fitted.probabilities[,i]))
+      y = yCorrected
     )
   }
 

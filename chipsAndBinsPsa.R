@@ -66,6 +66,8 @@ chipsAndBinsPsa <- function(expertData = NULL, model = "best", psaSamples = 1000
       d = model, 
       w = weights
     )
+    sampledData[sampledData < xMinLimit] <- xMinLimit
+    sampledData[sampledData > xMaxLimit] <- xMaxLimit
   })
   
   # return response
